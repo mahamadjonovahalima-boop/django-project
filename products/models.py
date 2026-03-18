@@ -20,3 +20,10 @@ class CartItem(models.Model):
 
     def __str__(self):
         return self.product.name
+
+class Order(models.Model):
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order {self.id}"
